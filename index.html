@@ -3,221 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Focus Photography - Portfolio</title>
-    <!-- Bootstrap CSS (CDN for simplicity) -->
+    <title>Alain Photography - Portfolio</title>
+    <!-- Bootstrap CSS (CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for icons -->
+    <!-- Lien vers Bootstrap 5.3.7 via CDN - framework CSS pour le responsive et composants pré-stylés -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" defer></script>
+    <!-- Le defer permet d'attendre que le DOM soit entièrement chargé avant d'exécuter le script -->
+    <!-- Font for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font pour les icônes - bibliothèque d'icônes vectorielles populaire -->
+    
     <style>
-        /* ================== CAROUSEL HOME BANNER (avec correction responsive) ================== */
+        /* ================== CAROUSEL HOME BANNER ================== */
+        /* Styles pour le carrousel principal en bannière */
         .carousel-inner {
-            height: 70vh; /* Hauteur de bannière sur écran large */
+            height: 70vh; /* Hauteur de bannière sur écran large - 70% de la hauteur de la fenêtre */
         }
         .carousel-item img {
-            width: 100%;
-            height: 70vh;
-            object-fit: cover;
+            width: 100%; /* Largeur complète du conteneur */
+            height: 70vh; /* Hauteur fixe pour maintenir la cohérence */
+            object-fit: cover; /* Couvre entièrement le conteneur en gardant les proportions */
         }
         .carousel-caption {
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 8px;
-            padding: 20px;
+            background-color: rgba(0,0,0,0.5); /* Arrière-plan semi-transparent noir pour la lisibilité */
+            border-radius: 8px; /* Coins arrondis pour un design moderne */
+            padding: 20px; /* Espacement interne pour le texte */
         }
-        /* Correction mobile/tablette : images non tronquées */
+        /* mobile/tablette : images non tronquées */
         @media (max-width: 991.98px) {
+            /* Media query pour écrans inférieurs à 992px (tablettes et mobiles) */
             .carousel-inner {
-                height: auto;
+                height: auto; /* Hauteur automatique sur mobile pour éviter les déformations */
             }
             .carousel-item img {
-                height: auto;
-                max-height: 50vh; /* Facultatif, limite l'espace vertical */
-                object-fit: contain; /* Toujours afficher toute l'image */
+                height: auto; /* Hauteur automatique pour respecter les proportions */
+                max-height: 50vh; /* Facultatif, limite l'espace vertical à 50% de la hauteur écran */
+                object-fit: contain; /* Toujours afficher toute l'image sans coupure */
             }
         }
 
+
         /* ================== PORTFOLIO ================== */
+        /* Styles pour la section portfolio avec mise en page en grille */
         .portfolio-wrapper {
-            display: flex;
-            gap: 15px;
-            align-items: stretch;
-            min-height: 400px;
+            display: flex; /* Flexbox pour alignement horizontal */
+            gap: 15px; /* Espacement entre les éléments */
+            align-items: stretch; /* Étire les éléments à la même hauteur */
+            min-height: 400px; /* Hauteur minimale pour cohérence visuelle */
         }
         .portfolio-large {
-            flex: 1;
-            max-width: 60%;
-            display: flex;
-            align-items: stretch;
+            flex: 1; /* Prend l'espace disponible */
+            max-width: 60%; /* Limite à 60% de la largeur pour équilibrer */
+            display: flex; /* Flexbox pour centrage */
+            align-items: stretch; /* Étire l'image sur toute la hauteur */
         }
         .portfolio-large img {
-            width: 100%;
-            height: 100%;
-            min-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+            width: 100%; /* Largeur complète du conteneur */
+            height: 100%; /* Hauteur complète du conteneur */
+            min-height: 400px; /* Hauteur minimale cohérente */
+            object-fit: cover; /* Couvre le conteneur en gardant les proportions */
+            border-radius: 8px; /* Coins arrondis pour design moderne */
+            cursor: pointer; /* Curseur pointer pour indiquer la cliquabilité */
+            transition: transform 0.3s ease; /* Animation fluide pour l'effet hover */
         }
         .portfolio-large img:hover {
-            transform: scale(1.02);
+            transform: scale(1.02); /* Légère augmentation de taille au survol */
         }
         .portfolio-small-grid {
-            flex: 1;
-            max-width: 35%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 10px;
-            height: 400px;
+            flex: 1; /* Prend l'espace disponible */
+            max-width: 35%; /* Limite à 35% pour équilibrer avec la grande image */
+            display: grid; /* CSS Grid pour disposition en grille */
+            grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
+            grid-template-rows: 1fr 1fr; /* 2 lignes égales */
+            gap: 10px; /* Espacement entre les images */
+            height: 400px; /* Hauteur fixe pour cohérence */
         }
         .portfolio-small-grid img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+            width: 100%; /* Largeur complète de la cellule */
+            height: 100%; /* Hauteur complète de la cellule */
+            object-fit: cover; /* Couvre la cellule en gardant les proportions */
+            border-radius: 8px; /* Coins arrondis */
+            cursor: pointer; /* Curseur pointer pour cliquabilité */
+            transition: transform 0.3s ease; /* Animation fluide */
         }
         .portfolio-small-grid img:hover {
-            transform: scale(1.05);
+            transform: scale(1.05); /* Effet hover plus prononcé sur petites images */
         }
         @media (max-width: 768px) {
+            /* Media query pour écrans mobiles inférieurs à 768px */
             .portfolio-wrapper {
-                flex-direction: column;
-                gap: 20px;
+                flex-direction: column; /* Disposition verticale sur mobile */
+                gap: 20px; /* Espacement plus grand sur mobile */
             }
             .portfolio-large,
             .portfolio-small-grid {
-                max-width: 100%;
-                width: 100%;
+                max-width: 100%; /* Pleine largeur sur mobile */
+                width: 100%; /* Largeur complète */
             }
             .portfolio-large img {
-                height: 250px;
-                min-height: 250px;
+                height: 250px; /* Hauteur fixe adaptée au mobile */
+                min-height: 250px; /* Hauteur minimale */
             }
             .portfolio-small-grid {
-                grid-template-columns: 1fr 1fr;
-                width: 100%;
-                height: auto;
+                grid-template-columns: 1fr 1fr; /* Maintient 2 colonnes sur mobile */
+                width: 100%; /* Largeur complète */
+                height: auto; /* Hauteur automatique */
             }
             .portfolio-small-grid img {
-                height: 120px;
-                width: 100%;
+                height: 120px; /* Hauteur réduite pour mobile */
+                width: 100%; /* Largeur complète */
             }
         }
         .portfolio-description {
-            margin-top: 30px;
-            display: none;
-            border-top: 2px solid #007bff;
-            padding-top: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
+            margin-top: 30px; /* Marge supérieure pour espacer */
+            display: none; /* Masqué par défaut, affiché via JavaScript */
+            border-top: 2px solid #007bff; /* Bordure supérieure bleue Bootstrap */
+            padding-top: 20px; /* Espacement interne supérieur */
+            background-color: #f8f9fa; /* Arrière-plan gris clair Bootstrap */
+            border-radius: 8px; /* Coins arrondis */
+            padding: 20px; /* Espacement interne global */
         }
 
-        /* ================== SERVICES (CORRIGÉ POUR DESKTOP ET MOBILE) ================== */
+
+        /* ================== SERVICES (POUR DESKTOP ET MOBILE) ================== */
+        /* Styles pour la section services avec adaptation responsive */
         .service-card {
-            text-align: left;
-            padding: 20px;
-            height: 100%;
+            text-align: left; /* Alignement du texte à gauche */
+            padding: 20px; /* Espacement interne */
+            height: 100%; /* Hauteur complète pour équilibrer les cartes */
         }
         /* Styles par défaut pour desktop */
         .service-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover; /* Remplit le conteneur sur desktop */
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
+            width: 100%; /* Largeur complète du conteneur */
+            height: 200px; /* Hauteur fixe pour cohérence */
+            object-fit: cover; /* Remplit le conteneur sur desktop en coupant si nécessaire */
+            border-radius: 8px; /* Coins arrondis */
+            margin-bottom: 1rem; /* Marge inférieure (1rem = 16px par défaut) */
+            transition: transform 0.3s ease; /* Animation fluide pour hover */
         }
         .service-image:hover {
-            transform: scale(1.05);
+            transform: scale(1.05); /* Agrandissement au survol */
         }
         /* Styles spécifiques pour mobile/tablette */
         @media (max-width: 991.98px) {
+            /* Media query pour écrans inférieurs à 992px */
             .service-card {
-                margin-bottom: 30px;
+                margin-bottom: 30px; /* Marge inférieure plus grande sur mobile */
             }
             .service-image {
-                height: auto; /* Hauteur automatique sur mobile */
+                height: auto; /* Hauteur automatique sur mobile pour éviter les déformations */
                 max-height: 250px; /* Limite la hauteur maximale */
                 object-fit: contain; /* Affiche toute l'image sans couper sur mobile */
             }
         }
 
+
         /* ================== NAVIGATION ================== */
+        /* Styles pour la barre de navigation */
         .navbar-nav .nav-link:hover {
-            font-weight: 600;
+            font-weight: 600; /* Texte plus gras au survol des liens */
         }
+        
         /* ================== FOOTER ================== */
+        /* Styles pour le pied de page */
         footer {
-            background-color: #343a40;
-            color: white;
+            background-color: #343a40; /* Arrière-plan gris foncé Bootstrap */
+            color: white; /* Texte blanc pour contraste */
         }
         footer a {
-            color: #adb5bd;
-            text-decoration: none;
+            color: #adb5bd; /* Couleur grise pour les liens */
+            text-decoration: none; /* Supprime le soulignement */
         }
         footer a:hover {
-            color: white;
+            color: white; /* Blanc au survol pour feedback visuel */
         }
+        /* ====== SECTION CONTACT ====== */
+#contact {
+    background-color: #2c2c2c; /* Gris foncé proche de l'image attachée */
+    color: #ffffff; /* Texte blanc pour contraste */
+}
+
     </style>
 </head>
 <body>
     <!-- ====== NAVBAR ====== -->
+    <!-- Barre de navigation fixe en haut de page -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <!-- navbar = composant Bootstrap, expand-lg = menu hamburger sur mobile, dark = thème sombre, fixed-top = fixé en haut -->
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#home">FOCUS PHOTOGRAPHY</a>
+            <!-- Container Bootstrap pour centrer et limiter la largeur -->
+            <a class="navbar-brand fw-bold" href="#home">ALAIN PHOTOGRAPHY</a>
+            <!-- Logo/nom du site, fw-bold = font-weight bold, href="#home" = lien vers section home -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <!-- Bouton hamburger pour mobile, data-bs-* = attributs Bootstrap pour JavaScript -->
                 <span class="navbar-toggler-icon"></span>
+                <!-- Icône hamburger stylisée par Bootstrap -->
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Contenu collapsible du menu, s'affiche/masque sur mobile -->
                 <ul class="navbar-nav ms-auto">
+                    <!-- Liste de navigation, ms-auto = margin-start auto (pousse vers la droite) -->
                     <li class="nav-item">
+                        <!-- Élément de liste de navigation -->
                         <a class="nav-link" href="#about">Qui suis-je</a>
+                        <!-- Lien vers la section "about" -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#services">Services</a>
+                        <!-- Lien vers la section "services" -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#portfolio">Portfolio</a>
+                        <!-- Lien vers la section "portfolio" -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
+                        <!-- Lien vers la section "contact" -->
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+
     <!-- ====== CAROUSEL (HERO) ====== -->
+    <!-- Section hero avec carrousel d'images en bannière -->
     <section id="home" class="mt-5 pt-3">
+        <!-- Section avec ID pour navigation, mt-5 = margin-top, pt-3 = padding-top (pour compenser navbar fixe) -->
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Conteneur du carrousel Bootstrap, data-bs-ride = défilement automatique -->
+            
             <!-- Indicateurs -->
             <div class="carousel-indicators">
+                <!-- Indicateurs de position du carrousel (points en bas) -->
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <!-- Bouton pour slide 1, active = slide actuel -->
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <!-- Bouton pour slide 2 -->
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                <!-- Bouton pour slide 3 -->
             </div>
+            
             <!-- Slides -->
             <div class="carousel-inner">
+                <!-- Conteneur des slides -->
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
+                    <!-- Premier slide, active = affiché par défaut -->
                     <img src="banner1.jpg" class="d-block w-100 img-fluid" alt="Photographie de rue">
+                    <!-- Image du slide, d-block = display block, w-100 = width 100%, img-fluid = responsive -->
                     <div class="carousel-caption d-none d-md-block">
+                        <!-- Texte superposé sur l'image, d-none d-md-block = masqué sur mobile, visible sur desktop -->
                         <h1 class="display-4">Photographie Urbaine</h1>
+                        <!-- Titre principal, display-4 = grande typographie Bootstrap -->
                         <p class="lead">Capturer l'essence de la vie urbaine</p>
+                        <!-- Sous-titre, lead = texte mis en valeur -->
                     </div>
                 </div>
+                
                 <!-- Slide 2 -->
                 <div class="carousel-item">
+                    <!-- Deuxième slide -->
                     <img src="banner2.jpg" class="d-block w-100 img-fluid" alt="Portrait professionnel">
+                    <!-- Image avec attribut alt pour accessibilité -->
                     <div class="carousel-caption d-none d-md-block">
                         <h1 class="display-4">Portraits Professionnels</h1>
                         <p class="lead">Révéler votre personnalité unique</p>
                     </div>
                 </div>
+                
                 <!-- Slide 3 -->
                 <div class="carousel-item">
+                    <!-- Troisième slide -->
                     <img src="banner3.jpg" class="d-block w-100 img-fluid" alt="Photographie événementielle">
                     <div class="carousel-caption d-none d-md-block">
                         <h1 class="display-4">Événements Spéciaux</h1>
@@ -225,29 +282,43 @@
                     </div>
                 </div>
             </div>
+            
             <!-- Contrôles précédent/suivant -->
             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <!-- Bouton précédent, data-bs-slide="prev" = action précédent -->
                 <span class="carousel-control-prev-icon"></span>
+                <!-- Icône flèche gauche stylisée par Bootstrap -->
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <!-- Bouton suivant, data-bs-slide="next" = action suivant -->
                 <span class="carousel-control-next-icon"></span>
+                <!-- Icône flèche droite stylisée par Bootstrap -->
             </button>
         </div>
     </section>
 
+
     <!-- ====== SECTION A PROPOS ====== -->
+    <!-- Section de présentation personnelle -->
     <section id="about" class="py-5 bg-light">
+        <!-- Section avec ID pour navigation, py-5 = padding vertical, bg-light = arrière-plan gris clair -->
         <div class="container">
-            <h2 class="display-5 fw-bold mb-4">Qui suis-je ?</h2>
+            <!-- Container Bootstrap pour centrer et limiter la largeur -->
+            <h2 class="display-5 fw-bold mb-4 text-center">Qui suis-je ?</h2>
+            <!-- Titre de section, display-5 = grande typographie, fw-bold = gras, mb-4 = marge inférieure -->
             <div class="row">
+                <!-- Système de grille Bootstrap pour disposition en colonnes -->
                 <div class="col-md-6 mb-3 mb-md-0">
+                    <!-- Colonne 6/12 sur desktop, mb-3 = marge inférieure sur mobile, mb-md-0 = pas de marge sur desktop -->
                     <p class="lead">
+                        <!-- Paragraphe avec classe lead pour texte important -->
                         Je suis photographe à Vic-Fezensac, au cœur du Gers, cette terre bénie des dieux où le canard est roi, l'Armagnac coule plus doux qu'un coucher de soleil, et D'Artagnan n'est pas une légende mais presque un voisin. Oui, j'ai la chance de vivre dans le plus beau village de France — sans chauvinisme aucun, bien sûr — loin devant Montpellier, c'est dit.
 Depuis plus de dix ans, la photographie est ma passion autant que mon métier. J'aime capturer l'authenticité d'un regard, la sincérité d'un sourire ou la beauté brute d'un instant volé. Chaque photo est pour moi une trace du présent, une émotion figée dans le temps, une histoire racontée sans mot.
 Je me suis spécialisé dans les portraits, les mariages, et les événements privés ou professionnels.
                     </p>
                 </div>
                 <div class="col-md-6">
+                    <!-- Deuxième colonne 6/12 sur desktop -->
                     <p class="lead">
                         Ce que je propose, ce n'est pas juste une série de clichés : c'est une expérience sur-mesure, conviviale, où chacun se sent à l'aise devant l'objectif — même ceux qui pensaient ne jamais l'être. Actuellement en formation à l'ADRAR pour renforcer mes compétences et élargir mes horizons, je crois fermement qu'un bon photographe ne cesse jamais d'apprendre. Mon approche combine rigueur technique, créativité, écoute et… une bonne dose de bonne humeur gersoise. Bref, si vous cherchez un photographe qui aime autant les belles images que son terroir, vous êtes au bon endroit. Prêt à capturer ensemble vos plus beaux souvenirs ?
                     </p>
@@ -256,19 +327,30 @@ Je me suis spécialisé dans les portraits, les mariages, et les événements pr
         </div>
     </section>
 
-    <!-- ====== SECTION SERVICES (CORRIGÉE POUR DESKTOP ET MOBILE) ====== -->
+
+    <!-- ====== SECTION SERVICES ====== -->
+    <!-- Section présentant les services offerts -->
     <section id="services" class="py-5">
+        <!-- Section avec ID pour navigation, py-5 = padding vertical -->
         <div class="container">
             <h2 class="text-center display-5 fw-bold mb-5">Mes Services</h2>
+            <!-- Titre centré, mb-5 = marge inférieure importante -->
             <div class="row justify-content-around">
+                <!-- Grille Bootstrap, justify-content-around = espacement égal autour des éléments -->
                 <div class="col-md-3 col-sm-6 col-12">
+                    <!-- Responsive : 3/12 sur desktop, 6/12 sur tablette, 12/12 sur mobile -->
                     <div class="service-card">
+                        <!-- Conteneur personnalisé pour chaque service -->
                         <img src="service-mariage.jpg" alt="Service Mariage" class="service-image img-fluid">
+                        <!-- Image du service, img-fluid = responsive -->
                         <h4 class="fw-bold mb-3">Mariage</h4>
+                        <!-- Titre du service, fw-bold = gras, mb-3 = marge inférieure -->
                         <p>Chaque instant de votre mariage mérite d'être immortalisé avec émotion, naturel et élégance. Offrez-vous des souvenirs uniques d'un jour inoubliable.</p>
+                        <!-- Description du service -->
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-12">
+                    <!-- Deuxième service avec même structure responsive -->
                     <div class="service-card">
                         <img src="service-concert.jpg" alt="Service Concert" class="service-image img-fluid">
                         <h4 class="fw-bold mb-3">Concert</h4>
@@ -276,6 +358,7 @@ Je me suis spécialisé dans les portraits, les mariages, et les événements pr
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-12">
+                    <!-- Troisième service -->
                     <div class="service-card">
                         <img src="service-portrait.jpg" alt="Service Portrait" class="service-image img-fluid">
                         <h4 class="fw-bold mb-3">Portrait</h4>
@@ -286,50 +369,76 @@ Je me suis spécialisé dans les portraits, les mariages, et les événements pr
         </div>
     </section>
 
+
     <!-- ====== SECTION PORTFOLIO ====== -->
+    <!-- Section galerie de travaux avec interaction JavaScript -->
     <section id="portfolio" class="py-5 bg-light">
+        <!-- Section avec arrière-plan gris clair pour distinction -->
         <div class="container">
             <h2 class="text-center display-5 fw-bold mb-5">Mon Portfolio</h2>
+            <!-- Titre centré -->
             <div class="portfolio-wrapper">
+                <!-- Conteneur personnalisé pour la mise en page du portfolio -->
                 <div class="portfolio-large">
+                    <!-- Conteneur pour la grande image principale -->
                     <img src="portfoliolh.jpg" alt="Photographie urbaine" id="img1">
+                    <!-- Image principale cliquable avec ID pour JavaScript -->
                 </div>
                 <div class="portfolio-small-grid">
+                    <!-- Grille pour les petites images -->
                     <img src="portfoliomup.jpg" alt="Photographie nature" id="img2">
+                    <!-- Chaque image a un ID unique pour l'interaction -->
                     <img src="portfoliorhup.jpg" alt="Photographie animalière" id="img3">
                     <img src="portfoliomdn.jpg" alt="Photographie d'objets" id="img4">
                     <img src="portfoliorhdn.jpg" alt="Photographie culinaire" id="img5">
                 </div>
             </div>
             <div id="description" class="portfolio-description"></div>
+            <!-- Conteneur pour la description dynamique, initialement masqué -->
         </div>
     </section>
 
+
     <!-- ====== SECTION CONTACT ====== -->
+    <!-- Section formulaire de contact avec validation -->
     <section id="contact" class="py-5">
         <div class="container">
             <h2 class="text-center display-5 fw-bold mb-5">Me Contacter</h2>
             <div class="row justify-content-center">
+                <!-- Centrage du formulaire -->
                 <div class="col-lg-8">
+                    <!-- Largeur limitée pour meilleure lisibilité -->
                     <form class="needs-validation" novalidate>
+                        <!-- Formulaire avec validation Bootstrap, novalidate = désactive validation HTML5 native -->
                         <div class="row g-3">
+                            <!-- g-3 = espacement entre les éléments du formulaire -->
                             <div class="col-md-6">
+                                <!-- Champ nom sur la moitié de la largeur sur desktop -->
                                 <label for="nom" class="form-label">Nom</label>
+                                <!-- Label associé au champ par l'attribut for -->
                                 <input type="text" class="form-control" id="nom" required>
+                                <!-- Champ texte avec validation required -->
                                 <div class="invalid-feedback">Veuillez entrer votre nom.</div>
+                                <!-- Message d'erreur Bootstrap affiché si validation échoue -->
                             </div>
                             <div class="col-md-6">
+                                <!-- Champ email sur l'autre moitié -->
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" required>
+                                <!-- Type email pour validation automatique du format -->
                                 <div class="invalid-feedback">Veuillez entrer un email valide.</div>
                             </div>
                             <div class="col-12">
+                                <!-- Champ message sur toute la largeur -->
                                 <label for="message" class="form-label">Message</label>
                                 <textarea class="form-control" id="message" rows="5" required></textarea>
+                                <!-- Textarea avec 5 lignes visibles -->
                                 <div class="invalid-feedback">Veuillez entrer votre message.</div>
                             </div>
                             <div class="col-12">
+                                <!-- Bouton d'envoi -->
                                 <button class="btn btn-primary btn-lg" type="submit">Envoyer</button>
+                                <!-- Bouton Bootstrap primaire de grande taille -->
                             </div>
                         </div>
                     </form>
@@ -338,64 +447,90 @@ Je me suis spécialisé dans les portraits, les mariages, et les événements pr
         </div>
     </section>
 
+
     <!-- ====== PIED DE PAGE ====== -->
+    <!-- Footer avec informations de contact et liens sociaux -->
     <footer class="py-4">
+        <!-- Padding vertical pour espacement -->
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h5 class="fw-bold mb-3">FOCUS PHOTOGRAPHY</h5>
-                    <p class="mb-1">📧 contact@focusphotography.fr</p>
+                    <!-- Informations de contact sur la moitié gauche -->
+                    <h5 class="fw-bold mb-3">ALAIN PHOTOGRAPHY</h5>
+                    <!-- Nom de l'entreprise en gras -->
+                    <p class="mb-1">📧 contact@alainphotography.fr</p>
+                    <!-- Email avec emoji pour visuel -->
                     <p class="mb-1">📞 +33 1 23 45 67 89</p>
-                    <p class="mb-0">📍 Paris, France</p>
+                    <!-- Téléphone avec emoji -->
+                    <p class="mb-0">📍 Vic-Fezensac, France</p>
+                    <!-- Adresse, mb-0 = pas de marge inférieure -->
                 </div>
                 <div class="col-md-6 text-md-end">
+                    <!-- Liens sociaux alignés à droite sur desktop -->
                     <h5 class="fw-bold mb-3">Suivez-moi</h5>
                     <a href="#" class="me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                    <!-- Lien Facebook, me-3 = marge à droite, fa-2x = icône double taille -->
                     <a href="#" class="me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                    <!-- Lien Instagram -->
                     <a href="#" class="me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                    <!-- Lien Twitter -->
                     <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <!-- Lien LinkedIn sans marge droite car dernier élément -->
                 </div>
             </div>
             <hr class="my-4">
+            <!-- Ligne de séparation horizontale avec marge verticale -->
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="mb-0">&copy; 2024 Focus Photography. Tous droits réservés.</p>
+                    <!-- Copyright centré sur toute la largeur -->
+                    <p class="mb-0">&copy; 2025 Alain Photography. Tous droits réservés.</p>
+                    <!-- Symbole copyright avec entité HTML -->
                 </div>
             </div>
         </div>
     </footer>
 
+
     <!-- ================== SCRIPTS ================== -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // ========== Validation Bootstrap formulaire de contact ==========
+        // Fonction immédiatement invoquée pour encapsuler le code et éviter les conflits
         (function() {
-            'use strict';
-            const form = document.querySelector('.needs-validation');
+            'use strict'; // Mode strict pour JavaScript plus sûr
+            const form = document.querySelector('.needs-validation'); // Sélectionne le formulaire
             form.addEventListener('submit', function(event) {
+                // Écoute l'événement de soumission du formulaire
                 if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
+                    // Si le formulaire n'est pas valide
+                    event.preventDefault(); // Empêche l'envoi
+                    event.stopPropagation(); // Arrête la propagation de l'événement
                 }
-                form.classList.add('was-validated');
-            }, false);
+                form.classList.add('was-validated'); // Ajoute la classe pour afficher les messages d'erreur
+            }, false); // false = ne pas capturer l'événement dans la phase de capture
         })();
 
+
         // ========== Défilement fluide pour la navigation ==========
+        // Sélectionne tous les liens commençant par # (liens internes)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+                // Écoute le clic sur chaque lien
+                e.preventDefault(); // Empêche le comportement par défaut (saut brutal)
                 const target = document.querySelector(this.getAttribute('href'));
+                // Trouve l'élément ciblé par le lien
                 if (target) {
+                    // Si l'élément existe
                     target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                        behavior: 'smooth', // Défilement fluide
+                        block: 'start' // Aligne le haut de l'élément avec le haut de la fenêtre
                     });
                 }
             });
         });
 
+
         // ========== Fonctionnalité portfolio dynamique (clic sur image) ==========
+        // Objet contenant les descriptions de chaque image du portfolio
         const descriptions = {
             img1:   `<h4 class="fw-bold text-primary mb-3">Morning city</h4>
                     <p>Au cœur de l'agitation urbaine, cette photo a été capturée à l'heure de pointe, en hauteur, dans une ville qui ne dort jamais. J'ai voulu retranscrire la densité, la tension mais aussi la poésie du quotidien. Chaque voiture, chaque lumière, raconte une histoire. Vous souhaitez valoriser un lieu, une ville ou une ambiance urbaine ? Contactez-moi pour donner à vos projets toute l'intensité visuelle qu'ils méritent.</p>`,
@@ -409,13 +544,17 @@ Je me suis spécialisé dans les portraits, les mariages, et les événements pr
                     <p>Cette photo a été prise lors d'un reportage sur les artisans du café. J'ai capturé ce moment précis où l'eau commence à infuser, dans un jeu d'ombres et de concentration. Tout est dans la précision, le geste, la passion. Si vous cherchez à documenter un savoir-faire, mettre en valeur un métier ou raconter une histoire de manière sincère : je suis prêt à collaborer.</p>`,
         };
 
+        // Sélectionne toutes les images dans la section portfolio
         const images = document.querySelectorAll('#portfolio img');
+        // Sélectionne le conteneur pour la description
         const descriptionDiv = document.getElementById('description');
+        // Ajoute un écouteur d'événement à chaque image
         images.forEach(img => {
             img.addEventListener('click', () => {
-                descriptionDiv.style.display = 'block';
-                descriptionDiv.innerHTML = descriptions[img.id];
-                descriptionDiv.scrollIntoView({behavior: 'smooth'});
+                // Au clic sur une image
+                descriptionDiv.style.display = 'block'; // Affiche la description
+                descriptionDiv.innerHTML = descriptions[img.id]; // Insert le contenu correspondant
+                descriptionDiv.scrollIntoView({behavior: 'smooth'}); // Défile vers la description
             });
         });
     </script>
